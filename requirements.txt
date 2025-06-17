@@ -1,0 +1,9 @@
+streamlit
+python-decouple
+langchain
+langchain-openai
+langchain-chroma
+langchain-community
+chromadb
+tiktoken
+pypdf
