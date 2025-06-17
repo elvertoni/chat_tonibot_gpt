@@ -18,6 +18,11 @@ def process_pdf(file):
 
     os.remove(temp_file_path)
 
+    # Limpar metadados para garantir que apenas o conteúdo textual seja processado
+    # Isso pode ajudar se algum metadado de imagem estiver causando o erro
+    for doc in docs:
+        doc.metadata = {} # Limpa todos os metadados, se necessário, pode ser mais seletivo
+
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
         chunk_overlap=400,
