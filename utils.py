@@ -9,7 +9,7 @@ from langchain_openai import OpenAIEmbeddings
 
 
 def process_pdf(file):
-    with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as temp_file:
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:
         temp_file.write(file.read())
         temp_file_path = temp_file.name
 
@@ -27,6 +27,10 @@ def process_pdf(file):
 
 
 def load_vector_store(persist_directory):
+    # Ensure the directory exists before trying to load from it
+    if not os.path.exists(persist_directory):
+        os.makedirs(persist_directory, exist_ok=True)
+
     if os.path.exists(persist_directory) and os.listdir(persist_directory):
         return Chroma(
             persist_directory=persist_directory,
@@ -36,6 +40,10 @@ def load_vector_store(persist_directory):
 
 
 def add_to_vector_store(chunks, persist_directory, vector_store=None):
+    # Ensure the directory exists before trying to write to it
+    if not os.path.exists(persist_directory):
+        os.makedirs(persist_directory, exist_ok=True)
+
     if vector_store:
         vector_store.add_documents(chunks)
     else:

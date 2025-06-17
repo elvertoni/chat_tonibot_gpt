@@ -7,6 +7,10 @@ WORKDIR /app
 # Copiar arquivos para dentro do container
 COPY . /app
 
+# Criar diretório para o ChromaDB e definir permissões
+RUN mkdir -p db && chmod -R 777 db
+
+
 # Instalar dependências
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt

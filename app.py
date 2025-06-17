@@ -20,7 +20,7 @@ st.set_page_config(
     page_title='ToniBot RAG Agent',
     page_icon='🤖',
 )
-st.title('🤖 ToniBot — Agente IA com seus documentos')
+st.title('🤖 ToniBot — Agente IA com seus documentos 2.0')
 
 knowledge_space = st.sidebar.text_input(
     '📚 Nome do espaço de conhecimento',
@@ -60,11 +60,6 @@ with st.sidebar:
     st.sidebar.divider()
 
     model_options = [
-        'gpt-3.5-turbo',
-        'gpt-4',
-        'gpt-4-turbo',
-        'gpt-4o-mini',
-        'gpt-4o',
         'gpt-4.1-mini',
     ]
     selected_model = st.sidebar.selectbox(
